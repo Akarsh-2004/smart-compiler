@@ -1,0 +1,162 @@
+/* Container layout */
+.compilation-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  background-color: #f9fafc;
+  min-height: 100vh;
+}
+
+/* Editor and Output sections */
+.editor-section,
+.output-section {
+  flex: 1;
+  min-width: 300px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex; /* Added for vertical layout */
+  flex-direction: column; /* Added for vertical layout */
+}
+
+.heading {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+/* Code input */
+.code-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: 'Fira Code', 'Cascadia Code', monospace; /* More code-friendly fonts */
+  flex-grow: 1; /* Allow textarea to take available space */
+  margin-bottom: 15px; /* Space before actions */
+  background-color: #f8f8f8; /* Light background for input */
+  color: #333;
+}
+
+/* Buttons and file input */
+.actions {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px; /* Space after actions */
+}
+
+.file-input {
+  font-size: 0.9rem;
+  /* Add some basic styling for visual consistency */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.primary-btn,
+.secondary-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.primary-btn {
+  background-color: #00c896;
+  color: white;
+}
+
+.primary-btn:hover:not(:disabled) {
+  background-color: #009e75;
+}
+
+.secondary-btn {
+  background-color: #4364f7;
+  color: white;
+}
+
+.secondary-btn:hover:not(:disabled) {
+  background-color: #2e4bd9;
+}
+
+.primary-btn:disabled,
+.secondary-btn:disabled {
+  background-color: #a0a0a0;
+  color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+/* Output & suggestion display */
+.output-box,
+.suggestion-box {
+  background-color: #f0f4f8;
+  padding: 15px;
+  border-radius: 6px;
+  /* min-height: 200px; removed to allow flex-grow */
+  font-family: 'Fira Code', 'Cascadia Code', monospace; /* More code-friendly fonts */
+  white-space: pre-wrap; /* Preserves whitespace and line breaks */
+  overflow: auto; /* Adds scrollbars if content overflows */
+  flex-grow: 1; /* Allow content boxes to fill remaining height */
+  color: #333;
+}
+
+.suggestion-box {
+  background-color: #e8f5e9; /* Light green for suggestions */
+  margin-top: 15px;
+  padding: 15px; /* Slightly more padding */
+  border: 1px dashed #66bb6a; /* Dashed border for visual distinction */
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-box strong {
+  color: #2e7d32; /* Darker green for heading */
+  margin-bottom: 8px; /* Space below "Suggestion:" */
+  display: block; /* Make it take its own line */
+}
+
+/* New error message styling */
+.error-message {
+  background-color: #ffebee; /* Light red */
+  color: #c62828; /* Dark red text */
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #ef9a9a; /* Red border */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .compilation-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 15px;
+  }
+  .editor-section,
+  .output-section {
+    padding: 15px;
+  }
+  .actions {
+    flex-direction: column;
+  }
+  .file-input,
+  .primary-btn,
+  .secondary-btn {
+    width: 100%; /* Full width buttons on small screens */
+  }
+}

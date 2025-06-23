@@ -1,0 +1,107 @@
+/* src/components/footer/Footer.css */
+
+.footer {
+  background: linear-gradient(to bottom, #101010, #0a0a0a); /* Deep, subtle gradient */
+  color: #c0c0c0; /* Light text for readability */
+  padding: 40px clamp(20px, 6vw, 40px) 20px; /* Responsive padding (top, side, bottom) */
+  /* This padding defines the space inside the footer */
+  border-top: 1px solid rgba(40, 40, 40, 0.5); /* Clearer top separator */
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+}
+
+.footer-container {
+  display: grid; /* Use CSS Grid for flexible layout */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+  gap: 40px; /* Space between sections */
+  max-width: 1280px; /* Match App container width */
+  margin: 0 auto; /* Center the container */
+  padding-bottom: 30px; /* Space before bottom copyright */
+  border-bottom: 1px solid rgba(40, 40, 40, 0.3); /* Separator above copyright */
+}
+
+.footer-section {
+  text-align: left; /* Align text within sections */
+}
+
+.footer-section h3 {
+  font-size: 1.5rem; /* Larger heading for sections */
+  color: #f8f8f8; /* Brighter heading color */
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.footer-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #a0a0a0; /* Slightly darker text for body */
+}
+
+/* Social Icons Styling */
+.social-icons {
+  display: flex;
+  gap: 20px; /* Space between icons */
+  margin-top: 15px;
+  justify-content: flex-start; /* Align icons to the left */
+}
+
+.social-icons a {
+  color: #61dafb; /* React blue for icons */
+  font-size: 1.8rem; /* Larger icon size */
+  transition: all 0.3s ease;
+  transform: scale(1); /* Initial scale for animation */
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.2); /* Subtle glow */
+}
+
+.social-icons a:hover {
+  color: #00c896; /* Primary green on hover */
+  transform: scale(1.2) translateY(-3px); /* Pop and lift effect */
+  text-shadow: 0 0 20px rgba(0, 200, 150, 0.7); /* Stronger glow */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px; /* Space above copyright text */
+  font-size: 0.85rem;
+  color: #777; /* Even darker grey for copyright */
+}
+
+/* Responsive adjustments for the footer */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Stack sections vertically on smaller screens */
+    gap: 30px; /* Reduce gap when stacked */
+    text-align: center; /* Center text for stacked layout */
+  }
+  .footer-section {
+    text-align: center; /* Center text within sections on mobile */
+  }
+  .social-icons {
+    justify-content: center; /* Center social icons on mobile */
+  }
+  .footer {
+    padding: 30px clamp(15px, 4vw, 30px) 15px; /* Tighter padding for mobile footer */
+  }
+  .footer-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .footer-section p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 25px clamp(10px, 3vw, 20px) 10px;
+  }
+  .footer-section h3 {
+    font-size: 1.2rem;
+  }
+  .social-icons a {
+    font-size: 1.6rem;
+  }
+}

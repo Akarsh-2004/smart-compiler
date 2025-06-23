@@ -1,0 +1,249 @@
+/* =============================
+   Base Reset & Fonts
+============================= */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fefefe;
+  color: #111;
+}
+
+/* =============================
+   Hero Section
+============================= */
+.hero-section {
+  background: linear-gradient(to right, #6fb1fc, #4364f7);
+  padding: 60px 20px 30px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Ensure title stays intact */
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.hero-title img {
+  width: 42px;
+  height: 42px;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  max-width: 680px;
+  /* Fixed: Much more visible white text */
+  color: #ffffff;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+}
+
+/* Separate styling for features section description */
+.features-description {
+  font-size: 1.15rem;
+  max-width: 680px;
+  color: #444;
+  line-height: 1.65;
+  margin: 0 auto 24px auto;
+  text-align: center;
+}
+
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  background-color: #00c896;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #009e75;
+  transform: scale(1.05);
+}
+
+/* =============================
+   Features Section
+============================= */
+.features-section {
+  padding: 50px 20px;
+  background-color: #f9fafc;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Fixed: Proper list alignment */
+.features-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.features-list ul {
+  list-style-type: disc;
+  text-align: left;
+  padding-left: 1.5rem;
+  max-width: 680px;
+  margin: 0;
+}
+
+.features-list li {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.feature-box {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 24px;
+  width: 280px;
+  text-align: left;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.feature-box h3 {
+  color: #4364f7;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.feature-box p {
+  color: #444;
+  line-height: 1.5;
+}
+
+/* =============================
+   Call to Action Section
+============================= */
+.call-to-action {
+  background-color: #e0f7fa;
+  padding: 50px 20px 40px;
+  text-align: center;
+}
+
+.call-to-action h2 {
+  color: #006064;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.call-to-action p {
+  font-size: 1.05rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* =============================
+   Responsive Styles
+============================= */
+@media (max-width: 768px) {
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-box {
+    width: 90%;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+    /* Allow wrapping on mobile */
+    white-space: normal;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-description,
+  .features-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 415px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .hero-description,
+  .features-description,
+  .call-to-action p {
+    font-size: 0.95rem;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .call-to-action h2 {
+    font-size: 1.3rem;
+  }
+
+  .features-list li {
+    font-size: 1rem;
+  }
+}
+
+/* =============================
+   Container & Alignment Helpers
+============================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}

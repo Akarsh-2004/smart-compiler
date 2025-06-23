@@ -1,0 +1,566 @@
+/* App.css */
+
+/* ===================================== */
+/* --- 0. Keyframe Animations          --- */
+/* ===================================== */
+
+@keyframes fluid-gradient-bg {
+  0% { background-position: 0% 50%, 100% 50%, 50% 100%; }
+  33% { background-position: 50% 100%, 0% 50%, 100% 0%; }
+  66% { background-position: 100% 0%, 50% 100%, 0% 50%; }
+  100% { background-position: 0% 50%, 100% 50%, 50% 100%; }
+}
+
+@keyframes fadeInSlideUp {
+  from { opacity: 0; transform: translateY(30px); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0px rgba(97, 218, 251, 0.4); }
+  50% { box-shadow: 0 0 15px rgba(97, 218, 251, 0.8), 0 0 25px rgba(97, 218, 251, 0.2); }
+  100% { box-shadow: 0 0 0px rgba(97, 218, 251, 0.4); }
+}
+
+
+/* ===================================== */
+/* --- 1. Global Resets & Base Styles  --- */
+/* ===================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7;
+  font-size: 16px;
+  background: #ffffff;
+  color: #e0e0e0;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  cursor: default;
+
+  background-image:
+    radial-gradient(at 10% 80%, #202b38 0%, transparent 70%),
+    radial-gradient(at 90% 10%, #3a2542 0%, transparent 70%),
+    radial-gradient(at 50% 50%, #1a1a1a 0%, transparent 80%);
+  background-repeat: no-repeat;
+  background-size: 180% 180%, 150% 150%, 100% 100%;
+  background-blend-mode: soft-light;
+  animation: fluid-gradient-bg 45s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures #root takes full viewport height */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: fadeInSlideUp 1s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+/* ===================================== */
+/* --- 2. Accessibility & Focus States --- */
+/* ===================================== */
+
+:focus-visible {
+  outline: 3px solid #00c896;
+  outline-offset: 4px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(0, 200, 150, 0.2);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+/* ===================================== */
+/* --- 3. Typography & Links           --- */
+/* ===================================== */
+
+a {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #00c896;
+  transform: translateY(-3px);
+  text-shadow: 0 0 12px rgba(97, 218, 251, 0.6);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f8f8f8;
+  margin-bottom: 0.8em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+}
+
+p {
+  margin-bottom: 1em;
+  color: #c0c0c0;
+}
+
+code {
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  background-color: #26262b;
+  padding: 0.25em 0.5em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  color: #92e0ff;
+  white-space: pre-wrap;
+  word-break: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+code:hover {
+  background-color: #35353d;
+  color: #c9f0ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ===================================== */
+/* --- 4. Utilities                    --- */
+/* ===================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+  border: 2px solid #18181b;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00c896;
+  border-color: #009e75;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 6vw, 40px);
+  width: 100%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.pulse-effect {
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+
+/* ===================================== */
+/* --- 5. Page Sections & Components   --- */
+/* ===================================== */
+
+/* Base styling for all main content sections */
+.page-section {
+  padding: 80px clamp(20px, 6vw, 40px); /* Consistent responsive padding for content within sections */
+  min-height: 50vh; /* Ensures sections have a minimum height, but allows content to dictate more */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* Removed general border-bottom here. Rely on distinct backgrounds or specific borders (like on .feature-section) */
+  animation: fadeInSlideUp 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* --- Hero Section Specifics (from Content.jsx) --- */
+.hero-section {
+  background: radial-gradient(circle at top left, #3a2542 0%, transparent 50%),
+              radial-gradient(circle at bottom right, #202b38 0%, transparent 50%);
+  background-color: #121212;
+  background-blend-mode: multiply;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 80px); /* Account for sticky navbar */
+}
+
+.hero-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-section h1,
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 800px;
+  color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.hero-section p,
+.hero-description {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  margin-bottom: 40px;
+  max-width: 700px;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+}
+
+/* Call to Action Button (reusable) */
+.cta-button {
+  background-color: #00c896;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 200, 150, 0.3);
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #009e75;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 200, 150, 0.5);
+}
+
+/* --- Editor Area (from App.jsx) --- */
+/* Ensure the container inside editor-area has its own padding if desired */
+.editor-area .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* --- Feature Section (from Content.jsx) --- */
+/* This section has a border-top for separation from the preceding section */
+.feature-section,
+.features-section {
+  background-color: #1e1e1e;
+  border-top: 1px solid rgba(40, 40, 40, 0.2);
+}
+
+.feature-section h2,
+.features-section h2,
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 25px;
+  color: #f8f8f8;
+}
+
+/* Features description styling */
+.features-description {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  max-width: 680px;
+  color: #c0c0c0;
+  line-height: 1.65;
+  margin: 0 auto 24px auto;
+  text-align: center;
+}
+
+/* Fixed: Proper list alignment for features */
+.features-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.features-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 900px;
+}
+
+.features-list li {
+  background-color: #282828;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+  min-width: 250px;
+  font-size: 1.1rem;
+  color: #c9d1d9;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #00c896;
+}
+
+.features-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(97, 218, 251, 0.2);
+}
+
+/* Legacy feature section styling (keeping for compatibility) */
+.feature-section ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature-section li {
+  background-color: #282828;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+  font-size: 1.1rem;
+  color: #c9d1d9;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-section li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(97, 218, 251, 0.2);
+}
+
+/* --- About Section (from App.jsx) --- */
+.about-area {
+  background-color: #1a1a1a;
+  /* padding is already handled by .page-section */
+}
+
+.about-area h2 {
+  margin-bottom: 25px;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.about-area h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #61dafb;
+}
+
+.about-area p {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: #c9d1d9;
+}
+
+.about-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.about-features-list li {
+  background-color: #282828;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  color: #e0e0e0;
+  border-left: 5px solid #00c896;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-features-list li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 200, 150, 0.3);
+}
+
+/* Emphasize text within about features list items */
+.about-features-list strong {
+  color: #61dafb;
+}
+
+/* --- Contact Section (from Content.jsx) --- */
+/* This section has a border-top to separate it from the previous content section */
+.contact-section {
+  background-color: #1e1e1e;
+  border-top: 1px solid rgba(40, 40, 40, 0.2);
+}
+
+.contact-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 20px auto 0;
+}
+
+.contact-section input,
+.contact-section textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #282828;
+  color: #e0e0e0;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Contact form input/textarea focus effects */
+.contact-section input:focus,
+.contact-section textarea:focus {
+  outline: none;
+  border-color: #00c896;
+  box-shadow: 0 0 0 2px rgba(0, 200, 150, 0.2);
+}
+
+.contact-section textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+
+/* ===================================== */
+/* --- 6. Media Queries                --- */
+/* ===================================== */
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 15px;
+    background-size: 150% 150%, 120% 120%, 90% 90%;
+    animation-duration: 35s;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    background-size: 120% 120%, 100% 100%, 80% 80%;
+    animation-duration: 25s;
+  }
+  .container {
+    padding: 0 clamp(15px, 4vw, 30px);
+  }
+  .page-section {
+    padding: 60px clamp(15px, 4vw, 30px);
+  }
+  .hero-section h1,
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    white-space: normal;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .hero-section p,
+  .hero-description {
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+  }
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  .feature-section ul,
+  .features-list ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .features-list li {
+    max-width: 90%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+    background-size: 100% 100%;
+    animation: none;
+    background-image: linear-gradient(to bottom right, #0e0e11, #1a1a1a);
+  }
+  #root {
+    animation: fadeInSlideUp 0.7s ease-out forwards;
+    animation-delay: 0s;
+    transform: translateY(10px);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.01em;
+    text-shadow: none;
+  }
+  .page-section {
+    padding: 40px clamp(10px, 3vw, 20px);
+  }
+  .hero-section h1,
+  .hero-title {
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+  }
+  .hero-section p,
+  .hero-description {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+  }
+  .about-features-list li {
+    padding: 12px 15px;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
+  }
+  .contact-section form {
+    gap: 10px;
+  }
+  .features-list li {
+    font-size: 1rem;
+    padding: 15px;
+  }
+}
