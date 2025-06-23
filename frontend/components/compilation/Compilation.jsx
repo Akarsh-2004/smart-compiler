@@ -12,7 +12,7 @@ function Compilation() {
 
   // IMPORTANT: With port forwarding, your Windows frontend connects to localhost.
   // The VM software handles forwarding to the Kali VM's internal IP.
-  const BACKEND_BASE_URL = "http://192.168.10.71:8000";
+  const BACKEND_BASE_URL = "localhot:8000"; 
   // <--- !!! REPLACE THIS !!!
 
   // Clean Gemini's output
